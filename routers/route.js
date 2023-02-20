@@ -1,16 +1,16 @@
 const express= require("express");
 const router=express.Router();
 
-const {verifytoken}= require('../middleware/auth');
-const {signup,getUser} = require("../controllers/signup");
-const { authToken } = require("../middleware/basicAuth");
-const {login,getdata}=require('../controllers/login');
+const {LoginUser,SignInUser} = require("../controllers/signup");
+
+router.get('/api',(req,res)=>{
+console.log('hello world')
+return res.json('hello world')
+})
+
+router.post('/signup',SignInUser);
+router.post('/login',LoginUser)
 
 
-
-router.post('/signup',signup);
-router.get('/getUser',verifytoken,getUser);
-router.post('/login',login);
-router.get('/getdata',authToken,getdata)
 
 module.exports = {router};
